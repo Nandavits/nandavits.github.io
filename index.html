@@ -157,6 +157,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 @media(max-width:600px){.trio,.sgrid,.edu{grid-template-columns:minmax(0,1fr)}.stage{height:420px}.pv{height:420px}.look dl{grid-template-columns:minmax(0,1fr);gap:2px}.look dd{margin-bottom:10px}.psr div{grid-template-columns:minmax(0,1fr);gap:2px}body{font-size:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:#2c2719;border:1px solid #2c2719;border-radius:16px;overflow:hidden;margin-top:30px}
+.stats div{background:#0a0a0a;padding:20px 18px}
+.snum{display:block;font:700 clamp(30px,3.2vw,42px) "Playfair Display",Georgia,serif;color:#f1d27a;white-space:nowrap;line-height:1.1;margin-bottom:6px}
+.stats span:not(.snum){font-size:14px;color:#cfc8b6;line-height:1.4;display:block}
+.fkick{font-weight:700;color:#d4af37;font-size:15px;margin-bottom:8px}
+@media(max-width:960px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:last-child{grid-column:1/-1}}
 /* motion */
 .flip{all:unset;display:block;perspective:1200px;cursor:pointer;min-height:300px;border-radius:16px}
 .flip:focus-visible{outline:3px solid #d4af37;outline-offset:4px}
@@ -267,17 +273,14 @@ h2.rv.in:after,.rv.in h2:after{width:120px}
 </div></section>
 
 <section class="band cases" id="impact"><div class="wrap">
- <h2 class="rv">Impact at Curagita AG</h2>
- <p class="lead">Real problems from a production healthcare billing platform, and what I did about them.</p>
+ <h2 class="rv">Impact</h2>
+ <p class="lead">What changed because of my work, at Curagita AG in Germany and Versatile Software in India.</p>
+ <div class="stats rv"><div><span class="snum">3.5 yrs</span><span>of billing history checked and a silent data gap traced to its cause</span></div><div><span class="snum">2</span><span>regional physician associations served by the platform I run analytics for</span></div><div><span class="snum">1M+</span><span>records cleaned and modelled for fraud detection</span></div><div><span class="snum">85%</span><span>accuracy detecting unusual consumption</span></div><div><span class="snum">247</span><span>automated tests guarding my own pipeline</span></div></div>
  <div class="feature rv">
   <div>
-   <div class="qbig">3.5 years</div>
-   <h3>Found a data gap nobody had noticed</h3>
-   <div class="psr">
-    <div><b>Problem</b><span>Reports looked complete, but part of the billing history was silently missing.</span></div>
-    <div><b>What I did</b><span>Profiled pipeline coverage in SQL quarter by quarter, then traced the gap through the Python PDF-parsing code to a silent fallback that wrote records nobody could attribute.</span></div>
-    <div><b>Result</b><span>14 consecutive quarters of missing data identified, with the root cause documented for the fix.</span></div>
-   </div>
+   <div class="fkick">Biggest catch</div>
+   <h3>Exposed a 3.5-year gap nobody had noticed</h3>
+   <div class="psr"><div><b>Problem</b><span>Reports looked complete, but 14 consecutive quarters of billing data had silently gone missing. Nobody had noticed for three and a half years.</span></div><div><b>What I did</b><span>Profiled pipeline coverage quarter by quarter in SQL, then traced the gap through the Python PDF-parsing code to a silent fallback that wrote records nobody could attribute.</span></div><div><b>Result</b><span>The gap and its root cause were documented, so the team could fix it instead of reporting revenue and case volumes on incomplete data.</span></div></div>
   </div>
   <div>
    <div class="qgrid" id="qg" role="img" aria-label="Quarterly coverage: 14 consecutive quarters were missing"></div>
@@ -285,9 +288,12 @@ h2.rv.in:after,.rv.in h2:after{width:120px}
   </div>
  </div>
  <div class="trio rv">
-  <button class="flip" type="button" aria-label="Stopped a revenue overstatement: flip to see what I did"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-check"/></svg></span><span class="ft">Stopped a revenue overstatement</span><span class="fp">A dashboard was counting revenue that did not exist.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">A dashboard counted too much revenue because one payer-type dimension was unfiltered. I found it and reconciled the figures against the official billing statements.</span><span class="out">Revenue now matches the source of truth</span></span></span></button>
-  <button class="flip" type="button" aria-label="One governed reporting layer: flip to see what I did"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-layers"/></svg></span><span class="ft">One governed reporting layer</span><span class="fp">Reports were scattered, duplicated and some year-on-year numbers were wrong.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I merged a fragmented Metabase suite into reusable datasets, removed duplicated business logic and fixed inverted calculations.</span><span class="out">Correct year-on-year figures</span></span></span></button>
-  <button class="flip" type="button" aria-label="Faster dashboards: flip to see what I did"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-bolt"/></svg></span><span class="ft">Faster dashboards</span><span class="fp">Daily dashboards were slow on heavy aggregations.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I profiled heavy multi-CTE aggregations with EXPLAIN ANALYZE and redesigned the dataset structure behind them.</span><span class="out">Dashboards stay quick for daily users</span></span></span></button>
+  <button class="flip" type="button" aria-label="Stopped a revenue overstatement"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-check"/></svg></span><span class="ft">Stopped a revenue overstatement</span><span class="fp">A dashboard was counting revenue that did not exist.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I found an unfiltered payer-type dimension and reconciled every figure against the official billing statements.</span><span class="out">Revenue matches the source of truth</span></span></span></button>
+  <button class="flip" type="button" aria-label="Built one source of truth"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-layers"/></svg></span><span class="ft">Built one source of truth</span><span class="fp">Scattered Metabase reports repeated logic, and some year-on-year numbers were inverted.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I consolidated them into governed, reusable datasets with one definition per metric and fixed the inverted calculations.</span><span class="out">Correct year-on-year figures, less duplicated work</span></span></span></button>
+  <button class="flip" type="button" aria-label="Made dashboards fast"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-bolt"/></svg></span><span class="ft">Made dashboards fast</span><span class="fp">Daily dashboards were slow on heavy multi-CTE aggregations.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I profiled the queries with EXPLAIN ANALYZE and redesigned the dataset structure behind them.</span><span class="out">Dashboards stay quick for daily users</span></span></span></button>
+  <button class="flip" type="button" aria-label="Kept streaming data reliable"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-flow"/></svg></span><span class="ft">Kept streaming data reliable</span><span class="fp">Billing data arrives through Kafka pipelines on Kubernetes in Google Cloud.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I review and troubleshoot the pipelines, checking data flow, job health and completeness before numbers reach anyone.</span><span class="out">Problems caught before they reach reports</span></span></span></button>
+  <button class="flip" type="button" aria-label="Automated recurring work"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-bot"/></svg></span><span class="ft">Automated recurring work</span><span class="fp">Recurring data and reporting tasks were done by hand.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I built n8n workflows that run these tasks automatically, and Airflow DAGs for ingestion and transformation.</span><span class="out">Less manual effort for the team</span></span></span></button>
+  <button class="flip" type="button" aria-label="Caught fraud in utility billing"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-chart"/></svg></span><span class="ft">Caught fraud in utility billing</span><span class="fp">At Versatile Software, government utility clients lost money to unusual consumption.</span><span class="hint">Hover or tap to flip ↻</span></span><span class="face back"><span class="ft">What I did</span><span class="fp">I cleaned more than 1 million records and built a Python and scikit-learn model that flags suspicious patterns.</span><span class="out">85% detection accuracy, more accurate billing</span></span></span></button>
  </div>
 </div></section>
 

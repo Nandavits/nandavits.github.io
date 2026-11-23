@@ -157,6 +157,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
 @media(max-width:600px){.trio,.sgrid,.edu{grid-template-columns:minmax(0,1fr)}.stage{height:420px}.pv{height:420px}.look dl{grid-template-columns:minmax(0,1fr);gap:2px}.look dd{margin-bottom:10px}.psr div{grid-template-columns:minmax(0,1fr);gap:2px}body{font-size:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:#2c2719;border:1px solid #2c2719;border-radius:16px;overflow:hidden;margin-top:30px}
+.stats div{background:#0a0a0a;padding:20px 18px}
+.snum{display:block;font:700 clamp(30px,3.2vw,42px) "Playfair Display",Georgia,serif;color:#f1d27a;white-space:nowrap;line-height:1.1;margin-bottom:6px}
+.stats span:not(.snum){font-size:14px;color:#cfc8b6;line-height:1.4;display:block}
+.fkick{font-weight:700;color:#d4af37;font-size:15px;margin-bottom:8px}
+@media(max-width:960px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:last-child{grid-column:1/-1}}
 /* motion */
 .flip{all:unset;display:block;perspective:1200px;cursor:pointer;min-height:300px;border-radius:16px}
 .flip:focus-visible{outline:3px solid #d4af37;outline-offset:4px}
@@ -267,17 +273,14 @@ h2.rv.in:after,.rv.in h2:after{width:120px}
 </div></section>
 
 <section class="band cases" id="impact"><div class="wrap">
- <h2 class="rv">Wirkung bei der Curagita AG</h2>
- <p class="lead">Echte Probleme aus einer produktiven Abrechnungsplattform im Gesundheitswesen und wie ich sie gelöst habe.</p>
+ <h2 class="rv">Wirkung</h2>
+ <p class="lead">Was sich durch meine Arbeit verändert hat, bei der Curagita AG in Deutschland und bei Versatile Software in Indien.</p>
+ <div class="stats rv"><div><span class="snum">3,5 J.</span><span>Abrechnungshistorie geprüft und eine stille Datenlücke bis zur Ursache verfolgt</span></div><div><span class="snum">2</span><span>Kassenärztliche Vereinigungen, deren Plattform ich analytisch betreue</span></div><div><span class="snum">1 Mio.+</span><span>Datensätze für die Betrugserkennung bereinigt und modelliert</span></div><div><span class="snum">85 %</span><span>Genauigkeit bei der Erkennung auffälligen Verbrauchs</span></div><div><span class="snum">247</span><span>automatisierte Tests sichern meine eigene Pipeline ab</span></div></div>
  <div class="feature rv">
   <div>
-   <div class="qbig">3,5 Jahre</div>
-   <h3>Eine unbemerkte Datenlücke gefunden</h3>
-   <div class="psr">
-    <div><b>Problem</b><span>Die Berichte wirkten vollständig, aber ein Teil der Abrechnungshistorie fehlte unbemerkt.</span></div>
-    <div><b>Mein Vorgehen</b><span>Ich habe die Abdeckung der Pipeline in SQL Quartal für Quartal geprüft und die Lücke durch den Python-Code zum PDF-Parsing bis zu einem stillen Fallback verfolgt, der nicht zuordenbare Datensätze schrieb.</span></div>
-    <div><b>Ergebnis</b><span>14 aufeinanderfolgende Quartale mit fehlenden Daten identifiziert und die Ursache für die Behebung dokumentiert.</span></div>
-   </div>
+   <div class="fkick">Größter Fund</div>
+   <h3>Eine 3,5-jährige Datenlücke aufgedeckt</h3>
+   <div class="psr"><div><b>Problem</b><span>Die Berichte wirkten vollständig, aber 14 aufeinanderfolgende Quartale an Abrechnungsdaten fehlten unbemerkt, dreieinhalb Jahre lang.</span></div><div><b>Mein Vorgehen</b><span>Ich habe die Abdeckung der Pipeline in SQL Quartal für Quartal geprüft und die Lücke durch den Python-Code zum PDF-Parsing bis zu einem stillen Fallback verfolgt, der nicht zuordenbare Datensätze schrieb.</span></div><div><b>Ergebnis</b><span>Lücke und Ursache wurden dokumentiert, damit das Team sie beheben konnte, statt Umsatz und Fallzahlen auf unvollständigen Daten zu berichten.</span></div></div>
   </div>
   <div>
    <div class="qgrid" id="qg" role="img" aria-label="Quartalsabdeckung: 14 aufeinanderfolgende Quartale fehlten"></div>
@@ -285,9 +288,12 @@ h2.rv.in:after,.rv.in h2:after{width:120px}
   </div>
  </div>
  <div class="trio rv">
-  <button class="flip" type="button" aria-label="Stopped a revenue overstatement: umdrehen, um mein Vorgehen zu sehen"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-check"/></svg></span><span class="ft">Überhöhten Umsatz korrigiert</span><span class="fp">Ein Dashboard zählte Umsatz, den es nicht gab.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ein Dashboard wies zu viel Umsatz aus, weil eine Kostenträger-Dimension nicht gefiltert war. Ich habe den Fehler gefunden und die Zahlen mit den offiziellen Abrechnungsbescheiden abgeglichen.</span><span class="out">Der Umsatz stimmt jetzt mit der Quelle überein</span></span></span></button>
-  <button class="flip" type="button" aria-label="One governed reporting layer: umdrehen, um mein Vorgehen zu sehen"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-layers"/></svg></span><span class="ft">Eine einheitliche Reporting-Schicht</span><span class="fp">Berichte waren verstreut und doppelt, und einige Vorjahresvergleiche waren falsch.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe eine zersplitterte Metabase-Landschaft zu wiederverwendbaren Datasets zusammengeführt, doppelte Geschäftslogik entfernt und vertauschte Berechnungen korrigiert.</span><span class="out">Korrekte Vorjahresvergleiche</span></span></span></button>
-  <button class="flip" type="button" aria-label="Faster dashboards: umdrehen, um mein Vorgehen zu sehen"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-bolt"/></svg></span><span class="ft">Schnellere Dashboards</span><span class="fp">Täglich genutzte Dashboards waren bei großen Aggregationen langsam.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe aufwendige Multi-CTE-Aggregationen mit EXPLAIN ANALYZE analysiert und die Struktur der Datasets dahinter neu aufgebaut.</span><span class="out">Dashboards bleiben für den täglichen Einsatz schnell</span></span></span></button>
+  <button class="flip" type="button" aria-label="Überhöhten Umsatz gestoppt"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-check"/></svg></span><span class="ft">Überhöhten Umsatz gestoppt</span><span class="fp">Ein Dashboard zählte Umsatz, den es nicht gab.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe eine ungefilterte Kostenträger-Dimension gefunden und jede Zahl mit den offiziellen Abrechnungsbescheiden abgeglichen.</span><span class="out">Umsatz stimmt mit der Quelle überein</span></span></span></button>
+  <button class="flip" type="button" aria-label="Eine einzige Wahrheit geschaffen"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-layers"/></svg></span><span class="ft">Eine einzige Wahrheit geschaffen</span><span class="fp">Verstreute Metabase-Berichte wiederholten Logik, und einige Vorjahresvergleiche waren vertauscht.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe sie zu gepflegten, wiederverwendbaren Datasets mit einer Definition pro Kennzahl zusammengeführt und die Berechnungen korrigiert.</span><span class="out">Korrekte Vorjahresvergleiche, weniger Doppelarbeit</span></span></span></button>
+  <button class="flip" type="button" aria-label="Dashboards schnell gemacht"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-bolt"/></svg></span><span class="ft">Dashboards schnell gemacht</span><span class="fp">Täglich genutzte Dashboards waren bei großen Multi-CTE-Aggregationen langsam.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe die Abfragen mit EXPLAIN ANALYZE analysiert und die Struktur der Datasets neu aufgebaut.</span><span class="out">Dashboards bleiben im Alltag schnell</span></span></span></button>
+  <button class="flip" type="button" aria-label="Streaming-Daten zuverlässig gehalten"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-flow"/></svg></span><span class="ft">Streaming-Daten zuverlässig gehalten</span><span class="fp">Abrechnungsdaten kommen über Kafka-Pipelines auf Kubernetes in Google Cloud.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich prüfe die Pipelines auf Datenfluss, Jobzustand und Vollständigkeit, bevor Zahlen bei jemandem ankommen.</span><span class="out">Fehler werden vor den Berichten erkannt</span></span></span></button>
+  <button class="flip" type="button" aria-label="Wiederkehrende Arbeit automatisiert"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-bot"/></svg></span><span class="ft">Wiederkehrende Arbeit automatisiert</span><span class="fp">Wiederkehrende Daten- und Reporting-Aufgaben wurden von Hand erledigt.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe n8n-Workflows gebaut, die diese Aufgaben automatisch ausführen, sowie Airflow-DAGs für Ingestion und Transformation.</span><span class="out">Weniger manueller Aufwand im Team</span></span></span></button>
+  <button class="flip" type="button" aria-label="Betrug bei der Versorgungsabrechnung erkannt"><span class="fin"><span class="face front"><span class="ico"><svg><use href="#i-chart"/></svg></span><span class="ft">Betrug bei der Versorgungsabrechnung erkannt</span><span class="fp">Bei Versatile Software verloren staatliche Versorger Geld durch auffälligen Verbrauch.</span><span class="hint">Zum Umdrehen zeigen oder tippen ↻</span></span><span class="face back"><span class="ft">Mein Vorgehen</span><span class="fp">Ich habe über 1 Million Datensätze bereinigt und mit Python und scikit-learn ein Modell gebaut, das verdächtige Muster markiert.</span><span class="out">85 % Erkennungsgenauigkeit, genauere Abrechnung</span></span></span></button>
  </div>
 </div></section>
 
